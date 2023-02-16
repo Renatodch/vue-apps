@@ -22,7 +22,7 @@ export default {
     },
     
     created() {
-
+        console.log(this.$route);
         // const { id } = this.$route.params
         // console.log(id)
         // this.id = id

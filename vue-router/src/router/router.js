@@ -3,6 +3,28 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import isAuthenticatedGuard from './auth-guard';
 
 const routes = [
+    { 
+        path: '/homesasaas', 
+        name: 'pokemon-home',
+        component: () => import(/* webpackChunkName: "ListPage" */ '@/modules/pokemon/pages/ListPage'),
+    },
+    { 
+        path: '/about', 
+        name: 'pokemon-about',
+        component: () => import(/* webpackChunkName: "AboutPage" */ '@/modules/pokemon/pages/AboutPage')
+    },
+    { 
+        path: '/sasdasd/:id',
+        name: 'pokemon-id',
+        component: () => import(/* webpackChunkName: "PokemonPage" */ '@/modules/pokemon/pages/PokemonPage'),
+        props: ( route ) => {
+            const id = Number( route.params.id );
+            return isNaN( id ) ? { id: 1 } : { id }
+        }
+    },
+]
+
+const routess = [
     {
         path: '/',
         redirect: '/pokemon'
@@ -39,7 +61,7 @@ const routes = [
         ]
     },
 
-    // DBZ Layout
+    //DBZ Layout
     {
         path: '/dbz',
         name: 'dbz',
